@@ -17,11 +17,15 @@
 	function toggleDone(task: Task) {
 		task.done = !task.done;
 	}
+
+	function removeTask(index: number) {
+		tasks.splice(index, 1);
+	}
 </script>
 
 <main>
 	<h1>Tasks App</h1>
 	<TasksForm {addTask} />
 	<p>{totalDone} / {tasks.length} tasks completed</p>
-	<TasksList {tasks} {toggleDone} />
+	<TasksList {tasks} {toggleDone} {removeTask} />
 </main>

@@ -1,13 +1,21 @@
 <script lang="ts">
 	import type { Task } from '../types';
-	let { tasks, toggleDone }: { tasks: Task[]; toggleDone: (task: Task) => void } = $props();
+	let {
+		tasks,
+		toggleDone,
+		removeTask
+	}: { tasks: Task[]; toggleDone: (task: Task) => void; removeTask: (index: number) => void } =
+		$props();
 </script>
 
-<article>
-	{#each tasks as task}
-		<label>
-			<input type="checkbox" checked={task.done} onchange={() => toggleDone(task)} />
-			{task.title}
-		</label>
+<section>
+	{#each tasks as task, index}
+		<article>
+			<label>
+				<input type="checkbox" checked={task.done} onchange={() => toggleDone(task)} />
+				{task.title}
+			</label>
+			<button onclick={() => removeTask(index)}>Remove</button>
+		</article>
 	{/each}
-</article>
+</section>
