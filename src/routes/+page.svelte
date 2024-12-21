@@ -38,13 +38,18 @@
 </script>
 
 {#snippet filterButton(filter: Filter)}
-	<button class="capitalize" onclick={() => (currentFilter = filter)}>
+	<button
+		class="rounded border px-4 py-2 capitalize text-white"
+		class:bg-white={currentFilter === filter}
+		class:text-black={currentFilter === filter}
+		onclick={() => (currentFilter = filter)}
+	>
 		{filter}
 	</button>
 {/snippet}
 
-<main>
-	<h1>Tasks App</h1>
+<main class="h-screen bg-neutral-800 p-4 text-white lg:px-80">
+	<h1 class="my-2 text-3xl font-semibold">Tasks App</h1>
 	<TasksForm {addTask} />
 	<p>
 		{#if tasks.length}
@@ -54,7 +59,7 @@
 		{/if}
 	</p>
 	{#if tasks.length}
-		<div>
+		<div class="my-4 flex justify-end space-x-2">
 			{@render filterButton('all')}
 			{@render filterButton('done')}
 			{@render filterButton('todo')}
