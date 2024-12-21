@@ -3,3 +3,5 @@ export type Task = {
 	title: string;
 	done: boolean;
 };
+
+export type Filter = 'all' | 'todo' | 'done';
